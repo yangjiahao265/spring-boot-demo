@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: demo
+
+management:
+  endpoint:
+    metrics:
+      tags:
+        application: ${spring.application.name}
+      distribution:
+        sla:
+          http:
+            server:
+              requests: 1ms,5ms,10ms,50ms,100ms,200ms,500ms,1s,5s
+      cache:
+        time-to-live: 0ms
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 8481
+
